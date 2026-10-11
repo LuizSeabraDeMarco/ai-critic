@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AiC — ai-critic | Model audits beyond accuracy</title>
+  <meta name="description" content="ai-critic is an open-source Python library that audits machine learning models across performance, robustness, explainability, calibration, data quality, fairness, and complexity.">
+  <meta name="theme-color" content="#0b100e">
+  <link rel="canonical" href="https://github.com/LuizSeabraDeMarco/ai_critic">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AiC — Your model is more than its accuracy">
+  <meta property="og:description" content="Open-source Python library for auditing ML models across seven dimensions, through one extensible interface.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23274638'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%23f1f3ef'%3EAiC%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bubbles" aria-hidden="true"></canvas>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top" aria-label="AiC (ai-critic) home"><span class="brand-mark" aria-hidden="true"><span>A</span><i>i</i><span>C</span></span><span class="brand-name">ai-critic</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu"><span></span></button>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="#product">Product</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#install">Documentation</a>
+        <a href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-solid btn-sm" href="#install">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="tag"><span class="dot" aria-hidden="true"></span>Open source, MIT License</p>
+          <div class="proof-strip" aria-label="20 thousand plus library downloads"><strong>20K+</strong><span>library downloads</span></div>
+          <h1 id="h1">Your model is more than its accuracy.</h1>
+          <p class="hero-sub">Audit machine learning models across performance, robustness, explainability, calibration, data quality, fairness, and complexity — through one extensible Python interface.</p>
+          <div class="hero-cta">
+            <a class="btn btn-solid" href="#install">Get Started</a>
+            <a class="btn" href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener">Explore on GitHub</a>
+          </div>
+        </div>
+      </div>
+      <p class="scroll-hint" aria-hidden="true"><i></i>scroll</p>
+      <p class="caption" aria-hidden="true">animated model-audit network</p>
+    </section>
+
+    <section class="sec" id="why">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Why</div>
+        <div>
+          <h2>One good number can hide a weak model.</h2>
+          <div class="lead" style="max-width:none">
+            <p style="max-width:62ch">Accuracy tells you how often a model is right on one dataset. It does not tell you whether its probabilities can be trusted, whether small changes in the input break it, whether the data was clean, or whether it behaves differently for different groups.</p>
+            <p style="max-width:62ch;margin-top:1em">ai-critic looks at those questions one by one and writes the answers into a report you can read, with the limits of each check stated next to its result.</p>
+          </div>
+
+          <div class="body">
+            <div class="compare glow">
+              <div class="compare-head"><span>Same accuracy, different audit</span><span class="illus">illustrative, synthetic data</span></div>
+              <div class="scroll">
+                <table>
+                  <thead><tr><th></th><th>Model A</th><th>Model B</th></tr></thead>
+                  <tbody>
+                    <tr><th>Accuracy</th><td>0.91</td><td>0.91</td></tr>
+                    <tr><th>Calibration error</th><td class="good">low</td><td class="bad">high</td></tr>
+                    <tr><th>Under input perturbation</th><td class="good">stable</td><td class="bad">score drops</td></tr>
+                    <tr><th>Data quality</th><td class="good">clean</td><td class="bad">duplicates found</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p class="small" style="margin-top:12px">A single metric would rate these two models as equal. An audit would not.</p>
+          </div>
+
+          <div class="principles">
+            <div><h3>Transparency</h3><p>Results come with explanations and limitations, so you can see what a check does not cover.</p></div>
+            <div><h3>Technical depth</h3><p>Meaningful metrics and diagnostics, with reproducible examples and fixed random seeds.</p></div>
+            <div><h3>Practicality</h3><p>One call fits into existing Python and scikit-learn workflows. No new pipeline to adopt.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="product">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Method</div>
+        <div>
+          <h2>Four steps from a fitted model to a report.</h2>
+          <p class="lead">You keep your own training code. ai-critic starts after the model is fitted.</p>
+          <div class="body flow">
+            <ol class="steps">
+              <li><span class="n">1</span><div><h3>Provide a fitted model and evaluation data</h3><p>Any model you already trained, plus held-out data such as <code>(X_test, y_test)</code>.</p></div></li>
+              <li><span class="n">2</span><div><h3>Declare the task type</h3><p>Set <code>task_type</code> so the audit chooses strategies for your problem instead of assuming a classifier.</p></div></li>
+              <li><span class="n">3</span><div><h3>Run the audit</h3><p>Call <code>ai_critic.audit</code>. An optional <code>EvaluationConfig</code> sets cross-validation folds and a random seed for reproducibility.</p></div></li>
+              <li><span class="n">4</span><div><h3>Inspect metrics, statuses, and limitations</h3><p>Read the overall result first, then open each dimension to see what was measured and what was not.</p></div></li>
+            </ol>
+            <div class="codeblock hud glow">
+              <div class="codeblock-bar"><span>audit.py</span><button class="copy" data-copy-target="#audit-code" aria-label="Copy Python example">Copy</button></div>
+<pre><code id="audit-code"><span class="k">import</span> ai_critic
+<span class="k">from</span> ai_critic <span class="k">import</span> EvaluationConfig
+
+report = ai_critic.<span class="f">audit</span>(
+    model,
+    (X_test, y_test),
+    task_type=<span class="s">"classification"</span>,
+    evaluation=<span class="f">EvaluationConfig</span>(
+        cv_folds=<span class="nm">5</span>,
+        random_state=<span class="nm">42</span>,
+    ),
+)
+
+<span class="f">print</span>(report.overall_score)
+<span class="f">print</span>(report.overall_verdict.value)</code></pre>
+            </div>
+          </div>
+          <dl class="outputs">
+            <div><dt>report.overall_score</dt><dd>A summary score for the whole audit. Use it as a starting point, not a verdict.</dd></div>
+            <div><dt>report.overall_verdict.value</dt><dd>The overall verdict as a value you can print or log.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="capabilities">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Dimensions</div>
+        <div>
+          <h2>Seven questions you can ask about a model.</h2>
+          <p class="lead">Each dimension asks one question, states what it examines, and tells you what to keep in mind when reading the result.</p>
+          <div class="body">
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-6"/></svg>
+              <div><h3>Performance</h3><p class="q">How well does the model do the job it was built for?</p></div>
+              <dl><div><dt>examines</dt><dd>Task-specific predictive or decision performance.</dd></div><div><dt>keep in mind</dt><dd>A score on one split says little about data the model has not seen.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6l8-3z"/></svg>
+              <div><h3>Robustness</h3><p class="q">Does the result survive small changes to the input?</p></div>
+              <dl><div><dt>examines</dt><dd>Sensitivity to supported perturbations.</dd></div><div><dt>keep in mind</dt><dd>Only supported perturbations are tested. Real-world shift can look different.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5"/></svg>
+              <div><h3>Explainability</h3><p class="q">Which inputs drive the model's output?</p></div>
+              <dl><div><dt>examines</dt><dd>Feature contributions and other supported diagnostics.</dd></div><div><dt>keep in mind</dt><dd>A feature that contributes is not necessarily a cause.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16V4" stroke-dasharray="2 3"/><path d="M4 20c6-1 10-5 16-16"/></svg>
+              <div><h3>Calibration</h3><p class="q">When the model says 80%, is it right about 80% of the time?</p></div>
+              <dl><div><dt>examines</dt><dd>Alignment between predicted probabilities and observed outcomes.</dd></div><div><dt>keep in mind</dt><dd>It only makes sense for models and tasks that produce probabilities.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>
+              <div><h3>Data Quality</h3><p class="q">Is the data itself in good shape?</p></div>
+              <dl><div><dt>examines</dt><dd>Missing values, duplicates, constant columns, and other supported checks.</dd></div><div><dt>keep in mind</dt><dd>Clean data is not the same as representative data.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 20h12M5 8h14M5 8l-3 7a3 3 0 006 0L5 8zm14 0l-3 7a3 3 0 006 0l-3-7z"/></svg>
+              <div><h3>Fairness</h3><p class="q">Does behavior differ across groups you name?</p></div>
+              <dl><div><dt>examines</dt><dd>Differences across explicitly defined groups.</dd></div><div><dt>keep in mind</dt><dd>Without defined groups, nothing is compared. That says nothing about fairness either way.</dd></div></dl>
+            </article>
+            <article class="dim glow">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2.5h11V10M12 12.5V14"/></svg>
+              <div><h3>Complexity</h3><p class="q">How large and costly is the model?</p></div>
+              <dl><div><dt>examines</dt><dd>Model structure and supported computational diagnostics.</dd></div><div><dt>keep in mind</dt><dd>What can be measured depends on what the model exposes.</dd></div></dl>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="tasks">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Tasks</div>
+        <div>
+          <h2>The audit follows the task you declare.</h2>
+          <p class="lead">A regression model has no class probabilities. A clustering model has no labels. Instead of treating every model as a classifier, ai-critic picks strategies from <code>task_type</code> and marks a dimension <code>not_applicable</code> when it does not fit.</p>
+          <div class="body tabs">
+            <div class="tablist" role="tablist" aria-label="Task types" id="tablist"></div>
+            <div id="tabpanels"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="report">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Report</div>
+        <div>
+          <h2>A report you can read, not only a score.</h2>
+          <p class="lead">Each dimension shows its status, its metrics, a plain explanation, and its limitations. Select a row to open it.</p>
+          <div class="body report-layout">
+            <div class="perspective">
+              <div class="report hud tilt" aria-label="Illustrative audit report">
+                <div class="scanline" aria-hidden="true"></div>
+                <div class="report-bar"><span>audit_report, classification</span><span class="illus">illustrative, synthetic data</span></div>
+                <div class="report-top"><span>overall_score</span><span class="score"><span data-count="0.82">0.82</span> <small>/ 1.00</small></span></div>
+                <ul id="full-report"></ul>
+                <div class="report-foot">Synthetic data. Real reports depend on your model, your data, and the installed version.</div>
+              </div>
+            </div>
+            <aside class="guide">
+              <div><h3>How to read the status</h3><p>A missing score is never silently turned into a pass. Each dimension reports one of three states.</p></div>
+              <div><span class="status st-ok">ok</span><p>The dimension ran and produced a result you can inspect.</p></div>
+              <div><span class="status st-na">not_applicable</span><p>The dimension does not apply to this task or setup, for example no groups were defined for fairness.</p></div>
+              <div><span class="status st-inc">inconclusive</span><p>The check ran, but the evidence is not strong enough to draw a conclusion.</p></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="limits">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Limits</div>
+        <div>
+          <h2>What ai-critic does not do.</h2>
+          <p class="lead">An audit is a tool for examining a model. The decision to use it stays with you.</p>
+          <ul class="body limits">
+            <li class="glow"><strong>It does not guarantee fairness.</strong>It compares groups you define. It cannot decide which groups matter.</li>
+            <li class="glow"><strong>It does not certify safety or compliance.</strong>A report is evidence to review, not a legal or regulatory finding.</li>
+            <li class="glow"><strong>It does not declare a model production ready.</strong>Deployment depends on context, data drift, and risks outside the audit.</li>
+            <li class="glow"><strong>It does not hide what it could not assess.</strong>Unsupported checks are reported as not applicable or inconclusive.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="install">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Install</div>
+        <div>
+          <h2>Install it and run your first audit.</h2>
+          <p class="lead">One command installs the package. Then use the example above with your own fitted model.</p>
+          <div class="body install-two">
+            <div>
+              <div class="cmd hud">
+                <code><span class="p">$</span>python -m pip install ai-critic</code>
+                <button class="copy" data-copy="python -m pip install ai-critic" aria-label="Copy install command">Copy</button>
+              </div>
+              <p class="small" style="margin-top:14px">Requires Python and a model you have already fitted.</p>
+            </div>
+            <ul class="links">
+              <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener"><span>GitHub repository</span><small>source code</small></a></li>
+              <li><a href="https://pypi.org/project/ai-critic/" target="_blank" rel="noopener"><span>PyPI package</span><small>ai-critic</small></a></li>
+              <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic#readme" target="_blank" rel="noopener"><span>Documentation and usage examples</span><small>README</small></a></li>
+              <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic/issues" target="_blank" rel="noopener"><span>Issues</span><small>report a bug</small></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="open-source">
+      <div class="wrap sec-grid">
+        <div class="sec-mark"><svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle class="spin" cx="12" cy="12" r="10" stroke-dasharray="14 5.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>Open source</div>
+        <div>
+          <span class="lic">MIT License</span>
+          <h2>Built in the open, with its limits in view.</h2>
+          <p class="lead">ai-critic is an open-source Python project. Evaluation methods have limits, and discussing them openly makes the tool more honest.</p>
+          <div class="os">
+            <div class="glow"><h3>Explore the code</h3><p>Read how each evaluator works in the <a href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener">repository</a>.</p></div>
+            <div class="glow"><h3>Report bugs</h3><p>Open an <a href="https://github.com/LuizSeabraDeMarco/ai_critic/issues" target="_blank" rel="noopener">issue</a> with a minimal example.</p></div>
+            <div class="glow"><h3>Suggest improvements</h3><p>Propose changes to the API, the reports, or the docs.</p></div>
+            <div class="glow"><h3>Contribute evaluators</h3><p>Add evaluators and task strategies. Contribution guidelines will be linked once published.</p></div>
+            <div class="glow"><h3>Discuss limitations</h3><p>Question the methodology. Clear limits are part of the design.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <svg class="reactor" viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true">
+        <defs><radialGradient id="rg"><stop offset="0" stop-color="#31715f" stop-opacity=".55"/><stop offset="1" stop-color="#31715f" stop-opacity="0"/></radialGradient></defs>
+        <circle class="core" cx="200" cy="200" r="90" fill="url(#rg)" stroke="none"/>
+        <circle class="a" cx="200" cy="200" r="190" stroke-width="1" stroke-dasharray="3 9" opacity=".6"/>
+        <circle class="b" cx="200" cy="200" r="160" stroke-width="1.2" stroke-dasharray="90 30" opacity=".7"/>
+        <circle cx="200" cy="200" r="130" stroke-width=".8" opacity=".4"/>
+        <g class="c" opacity=".7"><circle cx="200" cy="200" r="100" stroke-width="1" stroke-dasharray="40 14.7"/><path d="M200 140l52 90h-104z" stroke-width="1" stroke-linejoin="round"/></g>
+        <circle cx="200" cy="200" r="6" fill="currentColor" stroke="none"/>
+      </svg>
+      <div class="wrap">
+        <h2 class="r">Understand what your model gets right — and what it might be missing.</h2>
+        <a class="btn btn-solid r" href="#install">Start auditing your models</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span>A</span><i>i</i><span>C</span></span><span class="brand-name">ai-critic</span></a>
+        <ul>
+          <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/ai-critic/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic#readme" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic/issues" target="_blank" rel="noopener">Issues</a></li>
+          <li><a href="https://github.com/LuizSeabraDeMarco/ai_critic" target="_blank" rel="noopener">MIT License</a></li>
+        </ul>
+      </div>
+      <p class="foot-note">ai-critic is an open-source project under the MIT License. Reports and comparisons on this page use synthetic data for illustration. The library does not guarantee fairness, safety, compliance, or production readiness.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
